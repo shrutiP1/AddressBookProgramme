@@ -1,11 +1,10 @@
 package com.company.bridegelabz.adressbook;
 
-import java.util.ArrayList;
-import java.util.Scanner;
+import java.util.*;
 
 public class AddressBookMain {
     static ArrayList<ContactInfo> user = new ArrayList<ContactInfo>();
-
+    static HashMap<String, ArrayList<ContactInfo>> dictionary = new HashMap<String, ArrayList<ContactInfo>>();
 
     public static void addContact() {
         ContactInfo a1 = new ContactInfo();
@@ -21,7 +20,7 @@ public class AddressBookMain {
         switch (option) {
             case 1:
                 AddressBookMain.addContact();
-                System.out.println("If you want to continue then press 1 or press 2 if you want to quit");
+                System.out.println("If you want to continue to add Contact Details then press 1 or press 2 if you want to quit");
                 int num = scan.nextInt();
                 if (num == 1) {
                     chooseOption();
@@ -46,7 +45,6 @@ public class AddressBookMain {
     public static void editContact() {
 
         Scanner scan = new Scanner(System.in);
-        System.out.println("1");
         System.out.println("Enter name of contact you want to change in Address Book");
         String userName = scan.next();
         int count = 0;
@@ -133,12 +131,55 @@ public class AddressBookMain {
         }
     }
 
+    public static void addMultipleAddressBook() {
+        int count = 0;
+        String temp[] = new String[dictionary.size()];
+        Scanner scan = new Scanner(System.in);
+        System.out.println("Enter name for your dictionary");
+        String inputDictionary = scan.next();
+        for (String s : dictionary.keySet()) {
+            temp[count] = s;
+            count++;
+        }
+        for (int i = 0; i < count; i++) {
+            if (temp[i].equalsIgnoreCase(inputDictionary)) {
+                //System.out.println("1");
+                System.out.println("Address Book with this name is already exit please select another name");
+                addMultipleAddressBook();
+            }
+        }
+        AddressBookMain.chooseOption();
+        dictionary.put(inputDictionary, user);
+        System.out.println(dictionary);
+    }
+
+    public static void getUserDictionary() {
+        Scanner scan = new Scanner(System.in);
+        System.out.println("Do you want add another address book then press 1 and to quit 0");
+        int choice = scan.nextInt();
+        if (choice == 1) {
+            AddressBookMain.addMultipleAddressBook();
+            user.clear();
+            getUserDictionary();
+        } else {
+            System.out.println("Programme End");
+        }
+    }
+
     public static void main(String[] args) {
+        Scanner scan = new Scanner(System.in);
         System.out.println("Welcome to Address Book Programme");
         //UC1
+        System.out.println("What you Want to Call these address book");
+        String inputDictionaryName = scan.next();
         AddressBookMain.addContact();
         //UC2
         AddressBookMain.chooseOption();
+        //UC6
+        dictionary.put(inputDictionaryName, user);
+        System.out.println(dictionary);
+        user.clear();
+        AddressBookMain.getUserDictionary();
 
 
     }
