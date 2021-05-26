@@ -64,7 +64,12 @@ public class AddressBookMain {
                 selectAddressBook();
                 addressBook.get(bookNumber).printContacts();
                 break;
-
+            case 6:
+                addressBook.get(bookNumber).searchContactWithCity();
+                break;
+            case 7:
+                addressBook.get(bookNumber).searchContactsWiyhState();
+                break;
             default:
                 System.exit(0);
 

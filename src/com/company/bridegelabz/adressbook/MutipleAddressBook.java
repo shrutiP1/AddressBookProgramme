@@ -90,5 +90,21 @@ public class MutipleAddressBook {
         System.out.println(sortedArray);
     }
 
+    public void searchContactWithCity() {
+        System.out.println("Enter the city you want to search ; ");
+        String city = input.nextLine();
+        System.out.println("Name of the people  who are from " + city + " are:");
+        List<ContactInfo> cities = contacts.stream().sorted(Comparator.comparing(ContactInfo::getFirstName)).filter(contacts -> contacts.getCity().equals(city)).collect(Collectors.toList());
+
+    }
+
+    public void searchContactsWiyhState() {
+        System.out.println("Enter the state you want to search : ");
+        String state = input.nextLine();
+        System.out.println("Number of peoples who are from " + state + " are: ");
+        List<ContactInfo> states = contacts.stream().sorted(Comparator.comparing(ContactInfo::getFirstName)).filter(contacts -> state.equals(contacts.getState())).collect(Collectors.toList());
+
+    }
+
 
 }
