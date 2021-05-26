@@ -43,6 +43,8 @@ public class AddressBookMain {
         System.out.println("6. Search Contacts with Same City: ");
         System.out.println("7. Search Contacts with Same State: ");
         System.out.println("8. Print Contacts Sorted By City: ");
+        System.out.println("9:Print Contacts Sorted By State");
+        System.out.println("10:Print Contacts Sorted By Zip");
         System.out.print("Enter Your Choice: ");
         int option = scan.nextInt();
         switch (option) {
@@ -69,6 +71,15 @@ public class AddressBookMain {
                 break;
             case 7:
                 addressBook.get(bookNumber).searchContactsWiyhState();
+                break;
+            case 8:
+                addressBook.get(bookNumber).printContactsSortedByCity();
+                break;
+            case 9:
+                addressBook.get(bookNumber).printContactsSortedByState();
+                break;
+            case 10:
+                addressBook.get(bookNumber).printContactsSortedByZip();
                 break;
             default:
                 System.exit(0);
