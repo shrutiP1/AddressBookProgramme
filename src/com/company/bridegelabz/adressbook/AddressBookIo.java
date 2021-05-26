@@ -21,8 +21,6 @@ public class AddressBookIo {
         AddressBookIo addressbook = new AddressBookIo();
         addressbook.writeDatatoFile(Arrays.asList(contactarray));
         addressbook.readDataFromFile();
-
-
     }
 
     private void readDataFromFile() {

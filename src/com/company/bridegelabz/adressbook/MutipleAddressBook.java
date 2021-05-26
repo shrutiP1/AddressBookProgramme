@@ -122,7 +122,6 @@ public class MutipleAddressBook {
         List<ContactInfo> sortedArray = contacts.stream().sorted(Comparator.comparing(ContactInfo::getZip)).collect(Collectors.toList());
         System.out.println(sortedArray);
     }
-    
 
 
 }
