@@ -108,5 +108,20 @@ public class MutipleAddressBook {
         System.out.println("Number of peoples from " + state + " are " + (long) states.size());
     }
 
+    public void printContactsSortedByCity() {
+        List<ContactInfo> sortedArray = contacts.stream().sorted(Comparator.comparing(ContactInfo::getCity)).collect(Collectors.toList());
+        System.out.println(sortedArray);
+    }
+
+    public void printContactsSortedByState() {
+        List<ContactInfo> sortedArray = contacts.stream().sorted(Comparator.comparing(ContactInfo::getState)).collect(Collectors.toList());
+        System.out.println(sortedArray);
+    }
+
+    public void printContactsSortedByZip() {
+        List<ContactInfo> sortedArray = contacts.stream().sorted(Comparator.comparing(ContactInfo::getZip)).collect(Collectors.toList());
+        System.out.println(sortedArray);
+    }
+
 
 }
